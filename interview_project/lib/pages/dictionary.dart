@@ -47,33 +47,53 @@ class _DictionarySectionState extends State<DictionarySection> {
         appBar: AppBar(
           title: const Text('Dictionary Data'),
           centerTitle: true,
-          backgroundColor: Colors.cyan[400],
+          backgroundColor: Colors.greenAccent,
         ),
-        body: ListView.builder(
-          itemCount: dictionary.length,
-          itemBuilder: (BuildContext context, int index) {
-            var mapDictionaryElements = dictionary.entries.toList()
-              ..sort((x, y) => int.parse(x.key).compareTo(int.parse(y.key)));
-            dictionary
-              ..clear()
-              ..addEntries(mapDictionaryElements);
-            String yes = dictionary.keys.elementAt(index);
-            String no = dictionary.values.elementAt(index);
-            return Center(
-                child: Column(children: <Widget>[
-              const SizedBox(
-                height: 20,
-              ),
-              ListTile(
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(color: Colors.red, width: 0.5),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                title: Text(yes),
-                subtitle: Text(no),
-              )
-            ]));
-          },
+        body: Center(
+          child: SizedBox(
+            width: 200,
+            child: ListView.builder(
+              itemCount: dictionary.length,
+              itemBuilder: (BuildContext context, int index) {
+                var mapDictionaryElements = dictionary.entries.toList()
+                  ..sort(
+                      (x, y) => int.parse(x.key).compareTo(int.parse(y.key)));
+                dictionary
+                  ..clear()
+                  ..addEntries(mapDictionaryElements);
+                String yes = dictionary.keys.elementAt(index);
+                String no = dictionary.values.elementAt(index);
+                return Center(
+                  child: Column(
+                    children: <Widget>[
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ListTile(
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Colors.red, width: 0.5),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        title: Text(
+                          yes,
+                          style: const TextStyle(fontSize: 20),
+                          textAlign: TextAlign.center,
+                        ),
+                        subtitle: Text(
+                          no,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(fontSize: 15),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
         ));
   }
 }

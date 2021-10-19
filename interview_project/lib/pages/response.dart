@@ -24,37 +24,46 @@ class _ResponsePageState extends State<ResponsePage> {
       appBar: AppBar(
         title: const Text('Response'),
         centerTitle: true,
-        backgroundColor: Colors.cyan[400],
+        backgroundColor: Colors.greenAccent,
       ),
       body: Center(
-        child: FutureBuilder<List<Info>>(
-          future: infoData,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<Info>? data = snapshot.data;
-              return ListView.builder(
+        child: SizedBox(
+          // width: 300,
+          child: FutureBuilder<List<Info>>(
+            future: infoData,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Info>? data = snapshot.data;
+                return ListView.separated(
                   itemCount: data!.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
-                      // height: 75,
-                      color: Colors.white,
-                      child: ListTile(
-                        shape: RoundedRectangleBorder(
-                          side: const BorderSide(color: Colors.red, width: 0.5),
-                          borderRadius: BorderRadius.circular(15.0),
+                      child: SizedBox(
+                        height: 90,
+                        // color: Colors.white,
+                        child: ListTile(
+                          // shape: RoundedRectangleBorder(
+                          //   side: const BorderSide(color: Colors.red, width: 0.5),
+                          //   borderRadius: BorderRadius.circular(15.0),
+                          // ),
+                          title: Text('${data[index].title}'),
+                          subtitle: Text('${data[index].completed}'),
+                          leading: Text('${data[index].id}'),
+                          trailing: Text('${data[index].userId}'),
                         ),
-                        title: Text('${data[index].title}'),
-                        subtitle: Text('${data[index].completed}'),
-                        leading: Text('${data[index].id}'),
-                        trailing: Text('${data[index].userId}'),
                       ),
                     );
-                  });
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            }
-            return CircularProgressIndicator(color: Colors.cyan[400]);
-          },
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const Divider();
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return const CircularProgressIndicator(color: Colors.greenAccent);
+            },
+          ),
         ),
       ),
     );

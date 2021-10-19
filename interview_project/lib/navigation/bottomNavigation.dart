@@ -56,14 +56,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
           BottomNavigationBarItem(
               title: Text('Info'), icon: Icon(Icons.info_outline)),
           BottomNavigationBarItem(
-              title: Text('Response'), icon: Icon(Icons.person)),
+              title: Text('Response'), icon: Icon(Icons.network_cell_outlined)),
           BottomNavigationBarItem(
-              title: Text('Design'), icon: Icon(Icons.network_cell_outlined)),
+              title: Text('Design'), icon: Icon(Icons.person)),
           BottomNavigationBarItem(
               title: Text('Dictionary'), icon: Icon(Icons.api)),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.cyan[400],
+        selectedItemColor: Colors.greenAccent,
         onTap: _onSelectedItemTapped,
       ),
     );

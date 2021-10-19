@@ -15,26 +15,33 @@ class DesignSection extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Design'),
           centerTitle: true,
-          backgroundColor: Colors.cyan[400],
+          backgroundColor: Colors.greenAccent,
         ),
         body: Center(
           child: Card(
+            // color: Colors.amber,
+            margin: const EdgeInsets.all(8.0),
             elevation: 8.0,
-            shadowColor: Colors.black,
+            shadowColor: Colors.greenAccent,
             child: Container(
-              height: 120,
+              margin: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(3.0),
+              height: 250,
               width: 300,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15.0),
-              ),
               child: Center(
                   child: Column(
                 children: <Widget>[
                   const SizedBox(
-                    height: 40,
+                    height: 80,
                   ),
                   Text(nameField.toString()),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Text(emailField.toString()),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Text(phoneField.toString()),
                 ],
               )),

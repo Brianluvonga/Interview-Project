@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interview_project/pages/design.dart';
+import 'package:page_transition/page_transition.dart';
 
 class InformationScreen extends StatefulWidget {
   const InformationScreen({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class _InformationScreenState extends State<InformationScreen> {
       appBar: AppBar(
         title: const Text('Information'),
         centerTitle: true,
-        backgroundColor: Colors.cyan[400],
+        backgroundColor: Colors.greenAccent,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -42,25 +43,37 @@ class _InformationScreenState extends State<InformationScreen> {
                   Material(
                     elevation: 5.0,
                     borderRadius: BorderRadius.circular(30.0),
-                    color: Colors.cyan[400],
+                    color: Colors.white,
                     child: MaterialButton(
                       padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10),
                       minWidth: 200,
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => DesignSection(
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            child: DesignSection(
                               nameField: nameController.text,
                               emailField: emailController.text,
                               phoneField: phoneController.text,
                             ),
                           ),
                         );
+
+                        // Navigator.push(
+                        //   context,
+                        //   MaterialPageRoute(
+                        //     builder: (BuildContext context) => DesignSection(
+                        //       nameField: nameController.text,
+                        //       emailField: emailController.text,
+                        //       phoneField: phoneController.text,
+                        //     ),
+                        //   ),
+                        // );
                       },
                       child: const Text(
                         'Submit',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
+                        style: TextStyle(fontSize: 20, color: Colors.black),
                       ),
                     ),
                   ),
@@ -76,18 +89,18 @@ class _InformationScreenState extends State<InformationScreen> {
   // custom widgets for capturing user details
 
   Widget _nameField() {
-    return Container(
+    return SizedBox(
         width: 300,
         child: TextFormField(
           textCapitalization: TextCapitalization.words,
           decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                borderSide: BorderSide(width: 1, color: Colors.white),
+                borderSide: BorderSide(width: 1, color: Colors.greenAccent),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                borderSide: BorderSide(width: 1, color: Colors.white),
+                borderSide: BorderSide(width: 1, color: Colors.greenAccent),
               ),
               suffixIcon: const Icon(
                 Icons.person,
@@ -116,11 +129,11 @@ class _InformationScreenState extends State<InformationScreen> {
           decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                borderSide: BorderSide(width: 1, color: Colors.white),
+                borderSide: BorderSide(width: 1, color: Colors.greenAccent),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                borderSide: BorderSide(width: 1, color: Colors.white),
+                borderSide: BorderSide(width: 1, color: Colors.greenAccent),
               ),
               suffixIcon: const Icon(
                 Icons.person,
@@ -149,11 +162,11 @@ class _InformationScreenState extends State<InformationScreen> {
           decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                borderSide: BorderSide(width: 1, color: Colors.white),
+                borderSide: BorderSide(width: 1, color: Colors.greenAccent),
               ),
               focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                borderSide: BorderSide(width: 1, color: Colors.white),
+                borderSide: BorderSide(width: 1, color: Colors.greenAccent),
               ),
               suffixIcon: const Icon(
                 Icons.person,
