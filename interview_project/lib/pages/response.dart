@@ -37,20 +37,18 @@ class _ResponsePageState extends State<ResponsePage> {
                 return ListView.separated(
                   itemCount: data!.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      child: SizedBox(
-                        height: 90,
-                        // color: Colors.white,
-                        child: ListTile(
-                          // shape: RoundedRectangleBorder(
-                          //   side: const BorderSide(color: Colors.red, width: 0.5),
-                          //   borderRadius: BorderRadius.circular(15.0),
-                          // ),
-                          title: Text('${data[index].title}'),
-                          subtitle: Text('${data[index].completed}'),
-                          leading: Text('${data[index].id}'),
-                          trailing: Text('${data[index].userId}'),
-                        ),
+                    return SizedBox(
+                      height: 90,
+                      // color: Colors.white,
+                      child: ListTile(
+                        // shape: RoundedRectangleBorder(
+                        //   side: const BorderSide(color: Colors.red, width: 0.5),
+                        //   borderRadius: BorderRadius.circular(15.0),
+                        // ),
+                        title: Text('${data[index].title}'),
+                        subtitle: Text('${data[index].completed}'),
+                        leading: Text('${data[index].id}'),
+                        trailing: Text('${data[index].userId}'),
                       ),
                     );
                   },
