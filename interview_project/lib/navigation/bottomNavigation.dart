@@ -43,8 +43,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
   void _onSelectedItemTapped(int index) {
     setState(() {
       selectedIndex = index;
-      // _navigationController.animateToPage(index,
-      //     duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
     });
   }
 
@@ -65,7 +63,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
               title: Text('Dictionary'), icon: Icon(Icons.api)),
         ],
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.amber,
+        selectedItemColor: Colors.cyan[400],
         onTap: _onSelectedItemTapped,
       ),
     );

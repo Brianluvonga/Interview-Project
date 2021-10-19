@@ -8,7 +8,7 @@ class DictionarySection extends StatefulWidget {
 }
 
 class _DictionarySectionState extends State<DictionarySection> {
-  Map<String, String> dictionary = {
+  var dictionary = {
     '34': 'thirty-four',
     '90': 'ninety',
     '91': 'ninety-one',
@@ -25,23 +25,55 @@ class _DictionarySectionState extends State<DictionarySection> {
     '900': 'nine-hundred'
   };
 
-  sortDictionaryData() {
-    var mapDictionaryElements = dictionary.entries.toList()
-      ..sort((x, y) => x.value.compareTo(y.value));
+  // sorting method
 
-    dictionary
-      ..clear()
-      ..addEntries(mapDictionaryElements);
+  // sortDictionary() {
+  //   var mapDictionaryElements = dictionary.entries.toList()
+  //     ..sort((x, y) => int.parse(x.key).compareTo(int.parse(y.key)));
+  //   dictionary
+  //     ..clear()
+  //     ..addEntries(mapDictionaryElements);
 
-    dictionary;
-  }
+  //   // ignore: avoid_print
+  //   return ListView(
+  //       prototypeItem: ListTile(
+  //     title: Text(dictionary as String),
+  //   ));
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-      title: const Text('Dictionary API Data'),
-      centerTitle: true,
-    ));
+          title: const Text('Dictionary Data'),
+          centerTitle: true,
+          backgroundColor: Colors.cyan[400],
+        ),
+        body: ListView.builder(
+          itemCount: dictionary.length,
+          itemBuilder: (BuildContext context, int index) {
+            var mapDictionaryElements = dictionary.entries.toList()
+              ..sort((x, y) => int.parse(x.key).compareTo(int.parse(y.key)));
+            dictionary
+              ..clear()
+              ..addEntries(mapDictionaryElements);
+            String yes = dictionary.keys.elementAt(index);
+            String no = dictionary.values.elementAt(index);
+            return Center(
+                child: Column(children: <Widget>[
+              const SizedBox(
+                height: 20,
+              ),
+              ListTile(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(color: Colors.red, width: 0.5),
+                  borderRadius: BorderRadius.circular(15.0),
+                ),
+                title: Text(yes),
+                subtitle: Text(no),
+              )
+            ]));
+          },
+        ));
   }
 }

@@ -10,20 +10,6 @@ class ResponsePage extends StatefulWidget {
 }
 
 class _ResponsePageState extends State<ResponsePage> {
-  Widget _infoCard() {
-    return Card(
-      elevation: 8.0,
-      shadowColor: Colors.black,
-      child: Container(
-        height: 120,
-        width: 120,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15.0),
-        ),
-      ),
-    );
-  }
-
   Future<List<Info>>? infoData;
 
   @override
@@ -38,6 +24,7 @@ class _ResponsePageState extends State<ResponsePage> {
       appBar: AppBar(
         title: const Text('Response'),
         centerTitle: true,
+        backgroundColor: Colors.cyan[400],
       ),
       body: Center(
         child: FutureBuilder<List<Info>>(
@@ -45,18 +32,17 @@ class _ResponsePageState extends State<ResponsePage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<Info>? data = snapshot.data;
-              return ListView.separated(
+              return ListView.builder(
                   itemCount: data!.length,
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const Divider(
-                      color: Colors.black,
-                    );
-                  },
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       // height: 75,
                       color: Colors.white,
                       child: ListTile(
+                        shape: RoundedRectangleBorder(
+                          side: const BorderSide(color: Colors.red, width: 0.5),
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
                         title: Text('${data[index].title}'),
                         subtitle: Text('${data[index].completed}'),
                         leading: Text('${data[index].id}'),
@@ -67,7 +53,7 @@ class _ResponsePageState extends State<ResponsePage> {
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
-            return const CircularProgressIndicator();
+            return CircularProgressIndicator(color: Colors.cyan[400]);
           },
         ),
       ),

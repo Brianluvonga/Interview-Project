@@ -15,34 +15,31 @@ class DesignSection extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Design'),
           centerTitle: true,
+          backgroundColor: Colors.cyan[400],
         ),
-        body: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Center(
-                  child: Text(
-                nameField!.toString(),
-                style: TextStyle(fontSize: 22),
-                textAlign: TextAlign.center,
+        body: Center(
+          child: Card(
+            elevation: 8.0,
+            shadowColor: Colors.black,
+            child: Container(
+              height: 120,
+              width: 300,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: Center(
+                  child: Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Text(nameField.toString()),
+                  Text(emailField.toString()),
+                  Text(phoneField.toString()),
+                ],
               )),
-              Center(
-                  child: Text(
-                emailField!.toString(),
-                style: TextStyle(fontSize: 22),
-                textAlign: TextAlign.center,
-              )),
-              Center(
-                  child: Text(
-                phoneField!.toString(),
-                style: TextStyle(fontSize: 22),
-                textAlign: TextAlign.center,
-              )),
-              // RaisedButton(
-              //   onPressed: () => goBack(context),
-              //   color: Colors.lightBlue,
-              //   textColor: Colors.white,
-              //   child: Text('Go Back To Previous Screen'),
-              // )
-            ]));
+            ),
+          ),
+        ));
   }
 }
