@@ -48,6 +48,14 @@ class _InformationScreenState extends State<InformationScreen> {
                       padding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10),
                       minWidth: 200,
                       onPressed: () {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            duration: const Duration(seconds: 2),
+                            backgroundColor: Colors.red[600],
+                            content: const Text("Navigating to Design Page",
+                                style: TextStyle()),
+                          ),
+                        );
                         Navigator.push(
                           context,
                           PageTransition(
@@ -59,17 +67,6 @@ class _InformationScreenState extends State<InformationScreen> {
                             ),
                           ),
                         );
-
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (BuildContext context) => DesignSection(
-                        //       nameField: nameController.text,
-                        //       emailField: emailController.text,
-                        //       phoneField: phoneController.text,
-                        //     ),
-                        //   ),
-                        // );
                       },
                       child: const Text(
                         'Submit',
